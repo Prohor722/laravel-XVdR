@@ -14,8 +14,13 @@ use App\Http\Controllers\SimpleCrudController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::resource('user', SimpleCrudController::class);
+Route::get('/task', [SimpleCrudController::class, 'index']);
+Route::post('/task', [SimpleCrudController::class, 'store']);
+Route::delete('/task/{id}', [SimpleCrudController::class, 'destroy']);
+
+// Route::delete('/teacher/group/manage/{id}', [GroupStudentController::class, 'destroy']);
+

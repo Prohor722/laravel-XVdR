@@ -14,7 +14,9 @@ class SimpleCrudController extends Controller
      */
     public function index()
     {
-        return "success";
+        $tasks = SimpleCrud::all();
+
+        return view('task.index',['tasks'=>$tasks]);
     }
 
     /**
@@ -35,26 +37,15 @@ class SimpleCrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SimpleCrud::create($request->all());
+        return redirect('/task');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SimpleCrud  $simpleCrud
-     * @return \Illuminate\Http\Response
-     */
     public function show(SimpleCrud $simpleCrud)
     {
+        return "show";
+        dd($simpleCrud);
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SimpleCrud  $simpleCrud
-     * @return \Illuminate\Http\Response
-     */
     public function edit(SimpleCrud $simpleCrud)
     {
         //
@@ -78,8 +69,10 @@ class SimpleCrudController extends Controller
      * @param  \App\Models\SimpleCrud  $simpleCrud
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SimpleCrud $simpleCrud)
+    public function destroy($id)
     {
-        //
+        // return $id;
+        SimpleCrud::where('id',$id)->delete();
+        return redirect('/task');
     }
 }

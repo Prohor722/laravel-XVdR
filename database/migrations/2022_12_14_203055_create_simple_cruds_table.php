@@ -15,6 +15,7 @@ class CreateSimpleCrudsTable extends Migration
     {
         Schema::create('simple_cruds', function (Blueprint $table) {
             $table->id();
+            $table->string('task');
             $table->timestamps();
         });
     }

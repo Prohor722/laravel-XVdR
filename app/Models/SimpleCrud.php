@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class SimpleCrud extends Model
 {
     use HasFactory;
+    protected $fillable = [ 'task'];
 }
